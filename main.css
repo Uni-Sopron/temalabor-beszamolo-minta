@@ -1,0 +1,22 @@
+p {
+    text-align: justify;
+}
+
+em {
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+img {
+    width : 80%;
+    align-self: center;
+    border: 5px black solid
+}
+
+.section {
+    padding-top: 60px;
+}

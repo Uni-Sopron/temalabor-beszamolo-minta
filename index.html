@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="hu">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="main.css">
+
+    <base target="_blank">
+
+    <title>Témalabor beszámoló: RunnerMate's runner mates</title>
+    <script>
+        function encodePreElements() {
+            var pre = document.getElementsByTagName('code');
+            for (var i = 0; i < pre.length; i++) {
+                var encoded = htmlEncode(pre[i].innerHTML);
+                pre[i].innerHTML = encoded;
+            }
+        };
+
+        function htmlEncode(value) {
+            var div = document.createElement('div');
+            var text = document.createTextNode(value);
+            div.appendChild(text);
+            return div.innerHTML;
+        }
+    </script>
+</head>
+
+<body onload="encodePreElements();hljs.highlightAll()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" target="_self" href="#">RM's rms</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#introduction">Bevezetés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#problemdefinition">Probléma definíció, követelmények</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#technology">Felhasznált technológiák</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#usermanual">Felhasználói bemutatás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#documentation">Fejlesztői bemutatás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#timeline">Munkamenet, felosztás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_self" href="#summary">Összefoglalás, tervek</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1><b>RunnerMate's runner mates</b> / témalabor beszámoló (minta)</h1>
+
+        <div id="introduction" class="section">
+            <h2>Bevezetés</h2>
+
+            <div class="alert alert-info" role="alert">
+                A bevezetés célja, hogy náhány mondatban (nyomtatott formában kb egy-másfél oldal lenne) felvezesse, hogy
+                honnét jön a probléma, amivel foglalkoztunk, mi az nagy vonalakban, miért nem jók a jelenlegi megoldások, a
+                mi célunk mi volt, ezt hogy értük el, mit tud, amit csináltunk.
+                Egyfajta trailer a munkához.
+            </div>
+            <p>
+                Bár elsőre meglepő lehet, de egy aktív futókör szervezése sok háttérmunkát igényel a csoportos futóverseny
+                nevezésektől a médiában történő megjelenéseken át a közös rendezvényre frissítések megszervezéséig.
+                Ezen feladatok egy része általános, azaz többé-kevésbé minden futókörnél jelentkeznek, másikak az egyes
+                csapatokhoz specifikusak.
+                Amelyik feladat támogatható informatikai eszközökkel, ott sokszor fontos a megfelelő technológia
+                kiválasztása, főleg hogyha hosszútávú működtetés a cél.
+            </p>
+            <p>
+                E munka célja három "testvér" futókör néhány ilyen tevékenységének a támogatása.
+                A veszprémi <em>VeszpRUN</em>, győri <em>Futókalandorok</em> és a soproni <em>Loholó Duhajok</em> csapat hasonló működésű: egyik futókör sem hivatalos egyesület, csupán egy baráti társaság, akik heti rendszerességgel ugyanabban az időpontban összegyűlnek egy közös futásra, mely után az elégetett kalóriákat is pótolják.
+                Győrben és Sopronban a részvételek számon vannak tartva, és belső kisverseny alapját adják.
+                Ugyanígy vezetett az egyes sztenderd távokon a csapat tagjainak PB listája.
+                Mindhárom futókör pólórendelése közösen történik, illetve közös a "világjáró futópóló" galériájuk is.
+            </p>
+            <p>
+                A legrégebbi csapat, a VeszpRUN honlapja egy <a href="https://sites.google.com/">Google Sites</a> oldal volt, mely a fenti dolgokat többé-kevésbé támogatta.
+                Bár magának a honlapnak a szerkesztése felhasználóbarát volt, azonban a toplisták és egyéb aloldalak karban tartása már korántsem volt ilyen egyszerű.
+                Emellett nem igazán volt mobilbarát az oldal, és a Google is lecserélte pár éve az oldalakat támogató motorját, amitől több minden szétesett az oldalon.
+                Vélhetően ennek is köszönhetően a honlap elavult, az eredeti címen már nem is érhető el.
+            </p>
+            <p>
+                A győri Futókalandorok <a href="http://futokalandorok.hu/index.html">jelenlegi oldala egy <a href="https://pages.github.com/">GitHub Pages</a> oldal, melyet a GitHub szervereken futtatott <a href="https://jekyllrb.com/">Jekyll</a> generál.
+                    Az oldal már 4 éve működik, és bár jelenlegi feladatait ellátja, bizonyos ráncfelvarrások már igen időszerűek volnának.
+            </p>
+            <p>
+                A soproni csapatnak egy, a győriekéhez nagyon hasonló honlapra volna szüksége.
+                Éppen ezért indokolt volna egy olyan eszköz fejlesztése, mely egyszerre képes ellátni mindhárom futókör igényeit.
+                Egy ilyen rendszer elkészítése esetén logikusan egy helyen lehetnének a közös dolgok, valamint a csapatonkénti, de azonos jellegű dolgok informatikai támogatását, azok ráncfelvarrásait egy helyen lehetne kezelni, elkerülve három párhuzamos oldal karbantartását.
+            </p>
+            <p>
+                Az itt bemutatott munka ennek a közös rendszernek az eddig elkészült része, mely jelenleg főképp a futókörökkel kapcsolatos általános információinak hirdetését, valamint a sörtáblák elkészítését jelenti. A többi funkció migrálása a Futókalandor oldalról a közeljövőben várható.
+            </p>
+        </div>
+
+        <div id="problemdefinition" class="section">
+            <h2>Probléma definíció és követelmények</h2>
+            <div class="alert alert-info" role="alert">
+                Ennek a résznek azt kell leírnia, mi volt a <em>feladat</em>.
+                Ideális esetben a saját munkáról itt egy szó sem esik, hiszen az már a feladatra adott megoldás.
+                Érdemes egy általános folyószöveget követően a funkcionális és nem funkcionális követelményeket pontokba szedve leírni.
+            </div>
+            <p>
+                A futókörök életének szervezésében vannak olyan dolgok, melyek támogatására egy honlap az ideális, másokra például egy Facebook csoport, mellyel mindhárom csapat rendelkezik is.
+                A heti futások meghirdetése, az erról készült selfie posztolása tipikusan olyan feladat, amit életszerűtlen egy saját honlapon menedzselni.
+                Ugyanakkor a futókörre jellemző statikus információk hirdetőtáblájának szerepét a Facebook csoportok nem tudják megfelelően betölteni.
+                Ilyen információk például, hogy mikor és honnét indulnak rendszeresen a futások, kik a futókör vezetői, nekik mi az elérhetőségük.
+                De hasonló információ az is, hogy miképp néz ki a csapatpóló, hogyan lehet rendelni, mi a mérettáblázat hozzá, vagy hogy hol lehet futóversenyeket keresni, hol vannak a közelben megbíható futócipő boltok, masszőrök, stb.
+                Egy tipikus statikus adat továbbá a közös futásokon jellemző útvonalak listája, bemutatása.
+            </p>
+            <p>
+                Egy nem teljesen statikus tartalom a ritkán változó historikus adatok.
+                Veszprémben ilyen volt például a mókafutások leírása, valamint a múltbéli eseményekhez tartozó Facebook események, galériák linkje.
+                Mindhárom csapat oldalán érdekes a sztenderd távokon a csapat futóinak PB-jeiből (personal best) álló ranglista, melynek egyetlen működő példája jelenleg a győriek oldalán <a href="http://futokalandorok.hu/befuto.html">látható</a>.
+            </p>
+            <img src="assets/befutolista.jpg" class="img-fluid mx-auto d-block" alt="Futókalandorok: Befutó lista">
+            <p>
+                Egy győri tradíció a <em>Sörtábla</em> vezetése.
+                A győri futókör indulásakor elhangzott az az igéret, hogy az első 10 futó, aki legalább 10 futásra elmegy, meg lesz hívva egy ajándék sörre.
+                A csapat azóta számon tartja, ki, hányszor volt ott keddenként leróni a 7 km-es távot.
+                Megy a versengés a csapattagok között a 15 alkalmas, féléves, éves, illetve all-time ranglistákon, koccintanak a kerek számokra, stb.
+                221 közös futás után így néz ki a győri csapat <a href="http://futokalandorok.hu/sortabla.html">Sörtáblájának</a>jának egy része:
+            </p>
+            <img src="assets/sortabla.jpg" class="img-fluid mx-auto d-block" alt="Futókalandorok: Sörtábla">
+            <p>
+                Ezt a szokást a soproni futókör is átvette, de eleinte csak egy táblázatban vezetve az adatokat.
+            </p>
+            <p>
+                A tartalmi dolgok mellett a technológiák kiválasztásánál fontos figyelembe venni azt is, hogy a futókörök vezetői idővel változnak, és sok esetben nem rendelkeznek honlapszerkesztői, vagy egyéb informatikai háttérismeretekkel.
+                Példaképp, a veszpémi csapatot két informatikus alapította, de most már több mint öt éve két pénzügyi szakember vezeti.
+                A készítendő oldalnak olyannak kell lennie, hogy a szerkesztési jogosultságok bármikor könnyen átadhatók legyenek, valamint ne igényeljenek komoly szakmai háttértudást.
+            </p>
+            <h3>Funkcionális követelmények</h3>
+            <ol>
+                <li>A honlapon egyszerre legyenek elérhetőek a 3 futókör adatai, ne kelljen különböző oldalak között ugrálni.</li>
+                <li>Minden csapatnak legyen egy bemutatkozó oldala, ahol a legfontosabb információk és bemutatkozó szövegek megjelennek</li>
+                <li>Legyen minden csapatnak lehetősége megadni a leggyakoribb útvonalaikat.</li>
+                <li>Amelyik csapat élni kíván vele, vezethesse a sörtáblát.</li>
+                <li>Amelyik csapat élni kíván vele, vezethesse a PB-kből készült befutólistát.</li>
+                <li>Készüljenek statisztikák a részvételi adatokból azoknál a csapatoknál, akik ezt vezetik.</li>
+                <li>Legyen egy közös oldal a polók rendelésével kapcsolatos információkhoz.</li>
+                <li>Legyen közös oldala a világjáró képeknek.</li>
+                <li>Legyen lehetőség az oldal bővítésére további csapatspecifikus, közös, vagy általános aloldalakkal.</li>
+                <li>A futókörök adatainak módosítására a körök vezetőinek legyen lehetősége a megfelelő autentikálást követően.</li>
+            </ol>
+            <h3>Nemfunkcionális követelmények</h3>
+            <ol>
+                <li>Az oldal egy könnyen megjegyezhető címen legyen elérhető.</li>
+                <li>Az oldal minden része legyen reszponzív.</li>
+                <li>Amennyire lehetséges, a honlap legyen minimalista, ne használjon nagy és komplex js könyvtárakat egyszerű feladatok megoldására, ne fusson a háttérben felhasználót követő látogatottség számláló.</li>
+                <li>Az előzőből levezetve töltsön be gyoran, akár egy régi készüléken is. A komplexitás nem indokolja a komoly erőforráshasználatot.</li>
+                <li>Az oldal a látogatóról ne kérjen, vagy mentsen el semmilyen adatot. Az információáramlás teljesen egyirányú legyen.</li>
+                <li>Amennyire lehetséges legyen minimalizálva a rendszer karbantartásához szükséges energia (pl.: biztonsági frissítések telepítése)</li>
+                <li>Az oldal forrása legyen verziókezelt és jól dokumentált.</li>
+            </ol>
+        </div>
+
+        <div id="technology" class="section">
+            <h2>Felhasznált technológiák</h2>
+            <div class="alert alert-info" role="alert">
+                Ebben a részben röviden érdemes bemutatni a felhasznált technológiákat, beleértve a fejlesztéshez használt eszközöket is, nemcsak azokat, amik a végtermékben benne vannak.
+                A fontosabb eszközökről, azok fő tulajdonságairól illik 1-1 bekezdést írni, de teljesen felesleges egy mini gyorstalpalót beilletszteni.
+                Ugyanakkor a technológia működését, sajátosságát jól megmutató rövid forrásrészlet, ábra teljesen passzol.
+                Fontos <em>megindokolni</em>, miért ezek az eszközök kerültek kiválasztásra, miért nem valami az alternatívák közül, amik közül szintén illik párat felsorolni.
+            </div>
+            <p>
+                A konkrét technológiák kiválasztása előtt fontos eldönteni, hogy milyen volna a rendszer alapvető architektúrája. Erre több lehetőség is adódik, a teljesség igénye nélkül:
+            </p>
+            <ol>
+                <li>
+                    Sztenderd felállás, ahol van egy frontend, backend, utóbbi mögött egy adatbázis. Vannak vendégfelhasználók, akik csak megtekinteni tudnak, valamint vannak szerkesztési joggal rendelkező felhszanálók, a futókörök vezetői.</li>
+                <li>
+                    Egy frontend-only megoldás, mely magával az adatbázissal kommunikál, mely akár egyszerű text/json alapú.
+                </li>
+                <li>
+                    A fura megoldás: teljesen statikus oldal, mely változtatáskor újragenerálódik.
+                </li>
+                <li>
+                    Online, wisywig szerkeszthető honlap használata.
+                </li>
+            </ol>
+            <p>
+                Mindhárom megoldásnak megvannak az előnyei, hátrányai, és indokolt alkalmazási területeik.
+                A legnagyobb szabadsági fokot érthetően az első megoldás adja, komolyabb weboldalak esetében nem véletlenül ez az általános felállás.
+                Azonban ebben az esetben valahol szükséges a backendet és az adatbázist is hosztolni.
+                Ez minden esetben költséget jelent, akár saját szerverről, akár egy felhő szolgáltatásról van szó.
+                Az anyagi vonzat mellett ebben az esetben szükséges ezeknek a szervereknek a megfelelő karbantartása, biztonsági frissítések telepítése, stb.
+                Utóbbi minimalizálható, amennyiben nem teljes saját szervert tartunk karban, hanem csak például konténerizált appleteket indítunk el egy cloud infrastruktúrán.
+                Az ehhez a felálláshoz lehetséges tech stackekből már csak programozási nyelvenként is Dunát lehetne rekeszteni, de mivel nem erre esett a választás, nem tárgyaljuk őket.
+            </p>
+            <p>
+                Ha nincsen komolyabb backend logika, akkor egy racionális választás egy frontend heavy megoldás, ahol a kliensben futó js alkalmazás maga gyűjti össze az adatbázisból az adatokat, illetve esetlegesen bővíti/módosítja azt.
+                Amennyiben ezek az adatok ritkán változnak, ennek a megoldásnak a hátránya, hogy viszonylag gyakran elvégzi kliensenként ugyanazokat a számításokat, amit egy backend cache-elés például kiszürhetett volna.
+                Az adatbázis hosztolása ebben az esetben is feladat, azonban ha nem bonyolultak és nagy méretűek az adatok (ami jelen esetben igaz), akkor érdemes egy egyszerű szöveg/json alapú megoldást használni. Népszerű választás a <a href="https://firebase.google.com/products/realtime-database">Firebase</a>.
+            </p>
+            <p>
+                Ha a futókörök szituációját tekintjük, az adatok mérete és komplexitása elenyésző, semmiképpen nem indokolja egy relációs adatbázis használatát.
+                Az adatok módosítása is ritka: a sörtáblát minden futókör egy héten egyszer módosítja, befutólista versenyek után módosulhat, ez már ritkább.
+                A többi tartalom pedig szinte éves szinten változik.
+                Ezek miatt az első megoldás mindenképpen ágyúval ebihalra szituáció volna, még akkor is, ha nem grassroot fejlesztésről volna szó, hanem valamely népszerű keretrendszer felkonfigurálásáról.
+            </p>
+            <p>
+                Az utolsó lehetőség felhasználóbarát, és a korábban említett Google Sites mellett sok alternativa létezik, mint például a <a href="https://wordpress.com/">WordPress</a>, <a href="https://www.wix.com/">WiX</a> vagy <a href="https://www.squarespace.com/">Squarespace</a>.
+                A hátránya az ilyen megoldásoknak, hogy ami out-of-the-box működik, az könnyű, programozási tudást sem igényel, viszont ami nem, az sokszor körülményesen valósítható meg.
+                Emiatt egy Sörtábla logika implementálása lehet több energiát venne el, mint a komplett weboldal lefejlesztése.
+            </p>
+            <p>
+                A fentiekből következik, hogy bár a négy megoldás bármelyike járható, a második és a harmadik talán a legracionálisabb.
+                A két lehetősé közül én a harmadikat választottam, részben a korábbi ismereteim, részben a kihívás miatt.
+                Piaci környezetben mindenképp a kettes megoldás volna követendő.
+            </p>
+            <p>
+                A struktúrán belül a választásom a GitHub ökoszisztémára esett, melynek részeit az alábbiakban részletesebben be is mutatom.
+                A nem funkcionális követelmények egyikét némileg szigorúbban véve, a dologra egyfajta kihívásként tekintve kikötöttem magamnak, hogy csak nagyon-nagyon szükséges esetben nyúlhatok javascripthez.
+            </p>
+
+            <h3>Tech stack</h3>
+
+            <p>
+                Az alapvető felállás a következő:
+            <ul>
+                <li>Az adatatok a honlap forrásával együtt ugyanabban a GitHub repository-ban vannak tárolva.</li>
+                <li>Módosítások esetén pusholást követően szerver oldalon lefut <code>jekyll build</code>, mely elkészíti az oldal új (statikus) változatát.</li>
+                <li>Az ingyenes GitHub pages szolgáltatást igénybe véve az így elkészült oldal deploy-olódik.</li>
+            </ul>
+            </p>
+            <p>
+                Ennek a megoldásnak több előnye, és temészetesen hátránya is van:
+            <ul>
+                <li>Felhasználó autentikációval nem kell foglalkozni, ezt a GitHub lekezeli. Ugyanakkor jogosultságok nem, vagy körülményesen szabályozhatók</li>
+                <li>Nemcsak a program forrása, hanem az adatok is verziókövetettek, bármikor visszakereshető módosítás. Ugyanakkor nem "szép" a kettő összemosása. De később ez akár egy subrepository alkalmazásával orvosolható, mely a jogosultság problémákat is kezelné.</li>
+                <li>Minden teljesen ingyenes.</li>
+                <li>Az adatok könnyen szerkeszthető, szöveges formában adottak, nem informatikus számára is könnyen szerkeszthetők. Ugyanakkor szintaktikai hibák előfordulhatnak, de mivel ezek ritkák, az oldal naprakészsége nem kritikus, és verziókezelésnek hála könnyen javitható, ezért nem jelent komoly problémát.</li>
+                <li>Nem kell foglalkozni egyetlen eszköz karbantartáséval sem. Ugyanakkor muszáj alkalmazkodni a GitHub (elavult) Jekyll szoftververziójához.</li>
+            </ul>
+            </p>
+
+            <h4><a href="https://jekyllrb.com/">Jekyll</a></h4>
+            <p>
+                A Jekyll egy statikus HTML oldalakat generáló rendszer.
+                A modern weboldalak működésétől eltérően módosítások után (pl.: egy új blogposzt megírása) offline lefordul a "forrás", melynek eredménye egy statikus weboldal, mely deploy-olható.
+                Ez az oldal továbbra is tartalmazhat javascriptet, azonban nem tartozik az oldalhoz tradícionális backend.
+                Fapadosan szerkesztett html oldallal szemben az előnye, hogy ismétlődő részeket programozhatóan lehet benne generálni, melyhez alapvetően a Shopify Liquid template nyelvét használja.
+                Maga a Jekyll "fordító" ruby-ban írodott, azonban ennek elsajátítása nem szükséges a használatához, viszont pluginok programozására lehetőséget ad.
+                Azonban fontos észben tartani, hogy a GitHub ezeket a pluginokat nem támogatja biztonsági okokból.
+            </p>
+            <p>
+                Itt érdemes megjegyezni, hogy saját <a href="https://github.com/features/actions">Github Actions</a> pipeline megírásával lehetőség van saját pluginok használatára.
+                Ez a megoldás megnyitja a kaput a már lassan elavultnak mondható <code>3.9.0</code> Jekyll lecserélésére, vagy akár teljesen más nyelv és honlap generátor alkalmazására is, mint pl <a href="https://kinsta.com/blog/hugo-static-site/">Hugo</a> (Go) vagy <a href="https://blog.getpelican.com/">Pelican</a> (Python).
+                Igyekeztem a folyamatokat és a stacket a legegyszerűbbnek megtartani, és mivel megoldhatónak tűnt minden az alap szolgáltatásokkal, ezért ezen a kapun egyelőre nem léptem be.
+            </p>
+            <p>
+                Egy Jekyll projekt több forrást tartalmaz, melyek alapvetően a következő könyvtárakban foglalnak helyet:
+            </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><code>_data</code></th>
+                        <td>Az oldalhoz tartozó struktúrált adatok</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>_includes</code></th>
+                        <td>Ismétlődő (html) blokkok.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>_layouts</code></th>
+                        <td>Ismétlődő (html) "keretek".</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>assets</code></th>
+                        <td>Egyéb erőforrások, például képek.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>css</code></th>
+                        <td>Stílusfájlok</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>_posts</code></th>
+                        <td>(Blog)posztok könyvtára.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                A fentiek mellett további könyvtárak is előfordulhatnak, például <code>_sass</code> a <a href="https://sass-lang.com/">SASS</a> fájloknak, de egyelőre ezek használata még nem volt indokolt a projektben.
+                Mivel a jekyll blog támogatását sem használjuk (jelenleg) ki, ezért a <code>_posts</code> könyvtárt sem használjuk.
+                Adatfájlokból több formátum is támogatott, pl.: <a href="https://www.json.org/json-en.html">JSON</a>, <a href="https://yaml.org/">YAML</a>, CSV, stb.
+            </p>
+            <p>
+                A projekt a <code>jekyll build</code> parancs hatására lefordul, és az elkészített statikus oldal a <code>_site</code> könyvtárba generálódik.
+                Ezt, és sok minden más beállítást a <code>_config.yml</code> fájlban lehet megtenni.
+            </p>
+
+            <h4><a href="https://shopify.github.io/liquid/">Liquid</a></h4>
+            <p>
+                A Jelyll beépítetten a Shopify Liquid templating nyelvét használja.
+                A Liquid kódrészletek többnyire a html fájlokba épülnek be, és compile time hajtódnak végre.
+                A nyelvnek nem célja komolyabb programozási feladatok elvégzése, csupán megjelenítési feladatokat automatizál.
+            </p>
+            <p>
+                A teljesség igénye nélkül néhány alapvető nyelvi elem:
+            </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><code>{{variable | filter}}</code></th>
+                        <td>Változó értékének kiírása egy filter alkalmazásával.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>{% for item in array %} ... {% endfor %}</code></th>
+                        <td>Ciklus.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>{% if condition %} ... {% endif %}</code></th>
+                        <td>Elágazás.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>{% assign variable = expression %}</code></th>
+                        <td>Új változó létrehozása, változó értékének felülírása.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>{% include file %}</code></th>
+                        <td>Forrás bemásolása.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                Fontos megjegyezni, hogy adott rengeteg filter, de újak nem definiálhatók, valamint nem írhatók függvények.
+                Függvények működését valamelyest az <code>include</code>-okkal lehet helyettesíteni, azonban a scope kezelés nem a megszokott, így könnyen hibára lehet futni.
+            </p>
+
+            <h4>Bootstrap</h4>
+            Lorem ipsum...
+
+            <h3>Fejlesztéshez használt eszközök</h3>
+
+            <h4>Visual Studio Code</h4>
+            Lorem ipsum...
+            <h4>Chrome Developer Tools</h4>
+            Lorem ipsum...
+            <h4>git, GitHub</h4>
+            Lorem ipsum...
+            <h4>Python</h4>
+            Lorem ipsumm...
+        </div>
+
+        <div id="usermanual" class="section">
+            <h2>Felhasználói bemutatás</h2>
+            <div class="alert alert-info" role="alert">
+                Gyakorlatilag végigvezetni azon, hogy a felhasználó mit lát.
+                Screenshotok, gifek, videók, akár embeddelés.
+                A motorháztető alatti dolgokról itt nem írunk, "nagymama is megértse".
+            </div>
+            <p>
+                A kezdőoldal <a href="https://hegyhati.github.io/Runner-mates/index.html">itt</a> érhető el, és a három futókör legfontosabb adatait mutatja meg:
+            </p>
+            <img src="assets/index.jpg" class="img-fluid mx-auto d-block" alt="kezdőoldal">
+            <p>
+                Itt linkek találhatók a csapatok facebook csoportjaira, valamint a logóra vagy a cspaat nevére kattintva az adott futókör bemutatkozására ugrik az oldal:
+            </p>
+            <img src="assets/futokalandorok-bemutatkozas.jpg" class="img-fluid mx-auto d-block" alt="Futókalandorok bemutatkozás">
+            <p>
+                Az oldal természetesen reszpnzív, keskenyebb kijelzőn ugyanez az oldal így néz ki:
+            </p>
+            <img src="assets/futokalandorok-bemutatkozas-2.jpg" class="img-fluid mx-auto d-block" alt="Futókalandorok bemutatkozás" style="width:430px;">
+            <p>
+                A navigációs sávon lévő gombokra kattintva az adott futókörnél elérhető aloldalak között lehet váltani.
+                A nem kiválasztott futókörök esetében egyetlen gomb jelenik meg, mely az adott futókör bemutatkozására navigál.
+            </p>
+            <p>
+                Így néz ki például a soproni sörtábla 16 futás után:
+            </p>
+            <img src="assets/loholoduhajok-sortabla.jpg" class="img-fluid mx-auto d-block" alt="Loholó Duhajok Sörtábla">
+            <p>
+                Vagy a győriek útvonalainak a listája:
+            </p>
+            <img src="assets/futokalandorok-utvonalak.jpg" class="img-fluid mx-auto d-block" alt="Futókalandor útvonalak">
+            <p>
+                Hátralevő fejlesztés még a befutólista, valamint a pólórendelések oldalának elkészítése.
+            </p>
+        </div>
+
+        <div id="documentation" class="section">
+            <h2>Fejlesztői dokumentáció</h2>
+            <div class="alert alert-info" role="alert">
+                Ez az a rész, ahol a technikai részleteket le lehet és le is kell írni.
+                Érdemes valamilyen keretbe foglalni, hasznos egy felvezetés, ami az egyes alfejezetek tartalmát előrevetíti, összeköti.
+                Nem egzakt a határvonal, hogy hány sorig emelünk be inline kódot, és mennyitől linkeljük csak. Ökölszabályként azt mondanám, hogy 5-10, max 15 sorokat még be lehet emelni, ennél többet már csak linkeljetek.
+            </div>
+
+            <p>
+                A kezdeti <code>index.html</code> oldalat leszámítva egyetlen oldalból áll valójában az egész honlap.
+                Az oldalváltás csak látszat, valójában ilyenkor egyetlen http kérés sem történik, ugyanazon az oldalon különböző részek kerülnek elrejtésre, illetve megjelenítésre.
+                Ez a dinamika megoldható volna javascripttel és DOM manipulációval, azonban ugyanez a hatás elérhető <code>id</code> tagek használatával és CSS szabályokkal.
+            </p>
+
+            <p>
+                Az egyes aloldalak url-je ilyen struktúrát követ: <code>singlepage.html#[group]-[subpage]</code>.
+                A DOM-ban valójában benne van minden aloldal forrása egy <code>subpage</code> osztályba tartozó <code>div</code>-ben, azonban az alábbi CSS beállítások miatt csak az aktuálisan "kiválasztot" jelenik meg:
+            </p>
+
+            <pre>
+                <code class="language-css">
+.subpage {
+    display: none;
+}
+.subpage:target {
+    display: block;
+}
+                </code>
+            </pre>
+
+            <p>
+                Maga a <code>singlepage.html</code> forrása meglehetősen rövid:
+            </p>
+            <pre>
+                <code>
+---
+layout: default
+---
+{% for group in site.data.groups %}
+    {% for subpage in group.subpages %}
+        {% include page.html %}
+    {% endfor %}
+{% endfor %}
+                </code>
+            </pre>
+
+            <p>
+                Az első blokk, amiket <code>---</code> jelöli, hogy le kell fordítani a fájlt, nem csak átmásolni a <code>_site</code> könyvtárba.
+                A <code>layout: default</code> jelzi, hogy a <code>_layouts/default.html</code> keretet használja a fordító a fájl lefordításához, abban a <code>{{content}}</code> helyére illessze be ennek a fájlnak a törzsét.
+                Ez a fájl tartalmazza a html keretet, a szükséges css-ek betöltésével, stb:
+            </p>
+
+            <xmp>
+                <!doctype html>
+                <html lang="hu">
+
+                <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+                        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+                    <link rel="stylesheet" href="css/main.css">
+
+                    <title>{{ page.title }}</title>
+                </head>
+
+                <body>
+                    <div class="container">
+                        {{ content }}
+                    </div>
+                </body>
+
+                </html>
+            </xmp>
+
+            <p>
+                A <code>singlepage.html</code> törzsében szereplő liquid kód betölti minden csoport minden aloldalára az <code>_include/page.html</code>-t, de minden esetben más lesz a <code>group</code> és <code>subpage</code> változók értéke.
+                Mindkettő egy map, ahogy a <code>_data/groups.yaml</code> idevonatkozó részéből látszódik:
+            </p>
+            <pre>
+                <code class="language-yaml">
+- id: veszprun
+  subpages:
+    - type: bemutatkozas
+      name: Bemutatkozás
+      icon: 💬
+- id: futokalandorok
+  subpages:
+    - type: bemutatkozas
+      name: Bemutatkozás
+      icon: 💬
+    - type: utvonalak
+      name: Útvonalak
+      icon: 🏃
+    - type: sortabla
+      name: Sörtábla
+      icon: 🍺
+      shown: 15
+      hinted: 5
+- id: loholoduhajok
+  subpages:
+    - type: bemutatkozas
+      name: Bemutatkozás
+      icon: 💬
+    - type: utvonalak
+      name: Útvonalak
+      icon: 🏃
+    - type: sortabla
+      name: Sörtábla
+      icon: 🍺
+      shown: 5
+      hinted: 3                  
+                </code>
+            </pre>
+
+            <p>
+                Maga a <code>_include/page.html</code> is egyszerű, az aloldal típusa alapján delegálja az oldal elkészítését egy másik fájlnak, valamint betölti az adott aloldalhoz tartozó navigációs sávot is:
+            </p>         
+            <pre>
+                <code class="language-html">
+<div class="subpage" id="{% include page_id.liquid %}">
+    {% include navbar.html %}
+    {% include page_templates/{{subpage.type}}.html %}
+</div>
+                </code>
+            </pre>
+            <p>
+                A következő alfejezetekben a navigációs sávok, valamint az egyes aloldalak működését mutatom be.
+            </p>
+
+            <h3>Navigációs sáv</h3>
+            Lorem ipsum...
+            <h3>Bemutatkozás</h3>
+            Lorem ipsum...
+            <h3>Útvonalak</h3>
+            Lorem ipsum...
+            <h3>Sörtábla</h3>
+            Lorem ipsum...
+            
+
+
+
+
+        </div>
+
+        <div id="timeline" class="section">
+            <h2>Munkamenet, felosztás</h2>
+            <div class="alert alert-info" role="alert">
+                Ebben a részben arra vagyunk kíváncsiak, hogy miképp zajlott a fejlesztés, mikor volt meeting, ott mi dőlt el, mikorra mi lett kész, mi van még hátra, milyen határidőre mi a terv, stb.
+                Egy másik fontos dolog, hogy látszódjon, hogy ki mit csinált a munkából csapatok esetében.
+            </div>
+            Lorem ipsum...
+        </div>
+
+        <div id="summary" class="section">
+            <h2>Összefoglalás</h2>
+            <div class="alert alert-info" role="alert">
+                Rövid konklúzió, illetve továbbfejlesztési lehetőségek tárgyalása.
+            </div>
+            Lorem ipsum...
+        </div>
+
+
+    </div>
+</body>
+
+</html>
